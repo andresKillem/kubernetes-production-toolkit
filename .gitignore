@@ -1,0 +1,32 @@
+# Kubernetes
+*.swp
+*.swo
+*~
+
+# Helm
+charts/
+*.tgz
+
+# Secrets
+secrets/
+*.key
+*.pem
+*.crt
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+tmp/
+temp/

@@ -1,0 +1,36 @@
+{
+  "title": "Kubernetes Pod Latency",
+  "description": "P50/P90/P99 latency by namespace and service",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "p50 latency",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.5, sum(rate(http_request_duration_seconds_bucket{job=\"kubernetes\"}[5m])) by (le, namespace, service))",
+          "legendFormat": "{{namespace}}/{{service}}"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "p90 latency",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.9, sum(rate(http_request_duration_seconds_bucket{job=\"kubernetes\"}[5m])) by (le, namespace, service))",
+          "legendFormat": "{{namespace}}/{{service}}"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "p99 latency",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket{job=\"kubernetes\"}[5m])) by (le, namespace, service))",
+          "legendFormat": "{{namespace}}/{{service}}"
+        }
+      ]
+    }
+  ]
+}
